@@ -13,39 +13,44 @@ public class EmpWageCompUsingClassObj
            private static final int NUM_WORKING_DAYS = 20;
            private static final int MAX_HRS_IN_MONTH = 100;
 
-       public void getRandom()
+        public int getRandom()
+         {
+           double empCheck = Math.floor(Math.random() * 10 ) % 3;
+             switch ((int)empCheck)
+               {
+                 case 1:
+                         return 8;
+                 case 2:
+                         return 4;
+                 default:
+                         return 0;
+               }
+        }
+
+       public void empWageCal()
          {
            while ( totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NUM_WORKING_DAYS )
-            {
-                totalWorkingDays++;
-              double empCheck = Math.floor(Math.random() * 10) % 3;
-                 switch ((int)empCheck)
-                {
-                   case 1:
-                     {
-                       empHrs = 8;
-                       break;
-                      }
-                   case 2:
-                     {
-                       empHrs = 4;
-                     }
-                  default:
-                     {
-                       empHrs = 0;
-                       break;
-                     }
-                }
-               totalEmpHrs=totalEmpHrs+empHrs;
-            }
-           totalSalery = totalEmpHrs * WAGE_PER_HR;
-           System.out.println("Total Salery :"+totalSalery);
+             {
+                       empHrs=getRandom();
+                       totalWorkingDays++;
+                       salery = empHrs * WAGE_PER_HR;
+                       totalEmpHrs = totalEmpHrs + empHrs;
+              }
+            totalSalery = totalEmpHrs * WAGE_PER_HR;
+            System.out.println("Total Salery : "+totalSalery);
           }
+
 
       public static void main(String[ ] args)
          {
          System.out.println("Welcome to Employee Wage Computation Program");
          EmpWageCompUsingClassObj e = new EmpWageCompUsingClassObj();
-         e.getRandom();
+         e.empWageCal();
          }
 }
+
+
+
+
+
+
