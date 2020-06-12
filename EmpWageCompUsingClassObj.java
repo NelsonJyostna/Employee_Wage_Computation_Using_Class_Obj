@@ -4,17 +4,20 @@ public class EmpWageCompUsingClassObj
            int salery = 0;
            int empHrs = 0;
            int totalSalery =0;
-           //int day = 0;
+           int totalEmpHrs=0;
+           int totalWorkingDays=0;
 
-           private int IS_PART_TIME = 1 ;
-           private int IS_FULL_TIME = 2 ;
-           private int WAGE_PER_HR = 20 ;
-           private int NUM_WORKING_DAYS = 20;
+           private static final int IS_PART_TIME = 1 ;
+           private static final int IS_FULL_TIME = 2 ;
+           private static final int WAGE_PER_HR = 20 ;
+           private static final int NUM_WORKING_DAYS = 20;
+           private static final int MAX_HRS_IN_MONTH = 100;
 
-      public void getRandom()
+       public void getRandom()
          {
-           for ( int day=1; day<=NUM_WORKING_DAYS; day++ )
+           while ( totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NUM_WORKING_DAYS )
             {
+                totalWorkingDays++;
               double empCheck = Math.floor(Math.random() * 10) % 3;
               switch ((int)empCheck)
               {
@@ -44,7 +47,7 @@ public class EmpWageCompUsingClassObj
                      }
                 }
               //salery = empHrs * WAGE_PER_HR;
-             // totalSalery= totalSalery + salery;
+             //totalSalery= totalSalery + salery;
              //System.out.println("Total Salery : "+totalSalery);
             }
          }
