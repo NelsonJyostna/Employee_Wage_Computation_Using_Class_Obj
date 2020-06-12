@@ -3,9 +3,9 @@ public class EmpWageCompUsingClassObj
 
            int salery = 0;
            int empHrs = 0;
-           int totalSalery =0;
-           int totalEmpHrs=0;
-           int totalWorkingDays=0;
+           int totalSalery = 0;
+           int totalEmpHrs = 0;
+           int totalWorkingDays = 0;
 
            private static final int IS_PART_TIME = 1 ;
            private static final int IS_FULL_TIME = 2 ;
@@ -19,38 +19,28 @@ public class EmpWageCompUsingClassObj
             {
                 totalWorkingDays++;
               double empCheck = Math.floor(Math.random() * 10) % 3;
-              switch ((int)empCheck)
-              {
+                 switch ((int)empCheck)
+                {
                    case 1:
                      {
-                       System.out.println("Employee For Part Time");
                        empHrs = 8;
-                       salery = empHrs * WAGE_PER_HR;
-                       totalSalery= totalSalery + salery;
-                       System.out.println("Total Salery : "+totalSalery);
                        break;
                       }
                    case 2:
                      {
-                       System.out.println("Employee For Full Time");
                        empHrs = 4;
-                       salery = empHrs * WAGE_PER_HR;
-                       totalSalery= totalSalery + salery;
-                       System.out.println("Total Salery : "+totalSalery);
-                       break;
                      }
                   default:
                      {
-                       System.out.println("Employee is Abscent");
                        empHrs = 0;
                        break;
                      }
                 }
-              //salery = empHrs * WAGE_PER_HR;
-             //totalSalery= totalSalery + salery;
-             //System.out.println("Total Salery : "+totalSalery);
+               totalEmpHrs=totalEmpHrs+empHrs;
             }
-         }
+           totalSalery = totalEmpHrs * WAGE_PER_HR;
+           System.out.println("Total Salery :"+totalSalery);
+          }
 
       public static void main(String[ ] args)
          {
@@ -59,5 +49,3 @@ public class EmpWageCompUsingClassObj
          e.getRandom();
          }
 }
-
-
