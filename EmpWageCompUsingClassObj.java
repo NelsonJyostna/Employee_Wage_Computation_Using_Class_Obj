@@ -12,20 +12,27 @@ public class EmpWageCompUsingClassObj
       public void getRandom()
          {
            double empCheck = Math.floor(Math.random() * 10) % 3;
-           if  (IS_FULL_TIME == empCheck )
-             {
-                System.out.println("Employee is Present");
+
+           switch ((int)empCheck)
+              {
+                case 1:
+                 {
+                   System.out.println("Employee is Present");
+                   empHrs = 8;
+                   break;
+                  }
+                case 2:
+                 {
+                   System.out.println("Employee is Present");
                    empHrs = 4;
-             }
-           else if (IS_PART_TIME == empCheck )
-             {
-              System.out.println("Employee is Present");
-                  empHrs = 8;
-             }
-           else
-             {
-              System.out.println("Employee is Abscent");
-             }
+                   break;
+                 }
+              default:
+                 {
+                  System.out.println("Employee is Abscent");
+                  break;
+                 }
+            }
           Salery = empHrs * WAGE_PER_HR;
           System.out.println("Salery : "+Salery);
          }
