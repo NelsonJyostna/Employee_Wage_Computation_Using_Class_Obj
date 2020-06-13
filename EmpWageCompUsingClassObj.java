@@ -1,17 +1,28 @@
 public class EmpWageCompUsingClassObj
 {
 
-           int salery = 0;
+
+           public static final int IS_PART_TIME = 1 ;
+           public static final int IS_FULL_TIME = 2 ;
+
+           private final String company;
+           private final int wagePerHr;
+           private final int numOfWorkingDays;
+           private final int maxHrPerMonth;
+
+           //int salery = 0;
            int empHrs = 0;
-           int totalSalery = 0;
+          // int totalSalery = 0;
            int totalEmpHrs = 0;
            int totalWorkingDays = 0;
 
-           private static final int IS_PART_TIME = 1 ;
-           private static final int IS_FULL_TIME = 2 ;
-           private static final int WAGE_PER_HR = 20 ;
-           private static final int NUM_WORKING_DAYS = 20;
-           private static final int MAX_HRS_IN_MONTH = 100;
+        public EmpWageCompUsingClassObj(String company, int wagePerHr,int numOfWorkingDays, int maxHrPerMonth)
+          {
+            this.company=company;
+            this.wagePerHr=wagePerHr;
+            this.numOfWorkingDays=numOfWorkingDays;
+            this.maxHrPerMonth=maxHrPerMonth;
+          }
 
         public int getRandom()
          {
@@ -27,25 +38,31 @@ public class EmpWageCompUsingClassObj
                }
         }
 
-       public void empWageCal()
+       public int CalempWageForCompany()
          {
-           while ( totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NUM_WORKING_DAYS )
+           while ( totalEmpHrs < maxHrPerMonth && totalWorkingDays < numOfWorkingDays )
              {
                        empHrs=getRandom();
                        totalWorkingDays++;
-                       salery = empHrs * WAGE_PER_HR;
+                       //salery = empHrs * wagePerHr;
                        totalEmpHrs = totalEmpHrs + empHrs;
               }
-            totalSalery = totalEmpHrs * WAGE_PER_HR;
-            System.out.println("Total Salery : "+totalSalery);
-          }
+            int totalEmpWage = totalEmpHrs * wagePerHr;
+            //System.out.println("Total Emp Wage For Company "+company+" is : "+totalEmpWage);
+            System.out.println("Day:"+totalWorkingDays+" Emp Hr :"+empHrs);
+            return totalEmpWage;
+         }
 
 
       public static void main(String[ ] args)
          {
-         System.out.println("Welcome to Employee Wage Computation Program");
-         EmpWageCompUsingClassObj e = new EmpWageCompUsingClassObj();
-         e.empWageCal();
+          System.out.println("Welcome to Employee Wage Computation Program");
+          EmpWageCompUsingClassObj dMart = new EmpWageCompUsingClassObj("Dmart", 20 , 6, 100);
+          EmpWageCompUsingClassObj bridgeLab = new EmpWageCompUsingClassObj("BridgeLab", 26 , 10, 150);
+          EmpWageCompUsingClassObj reliance = new EmpWageCompUsingClassObj("Reliance", 10 , 9, 130);
+          System.out.println("Total Emp Wage for company" + dMart.company + "is :" + dMart.CalempWageForCompany());
+          System.out.println("Total Emp Wage for company" + bridgeLab.company + "is :" + bridgeLab.CalempWageForCompany());
+          System.out.println("Total Emp Wage for company" + reliance.company + "is :" + reliance.CalempWageForCompany());
          }
 }
 
