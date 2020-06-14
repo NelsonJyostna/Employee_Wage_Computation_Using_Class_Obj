@@ -1,4 +1,9 @@
-//import java.util.*;
+interface ICalempWageForCompany
+{
+     public void addCompanyEmpWage(String company, int wagePerHr,int numOfWorkingDays, int maxHrPerMonth);
+     public void CalempWageForCompany();
+}
+
 class CompanyEmpWage
 {
 
@@ -30,7 +35,7 @@ class CompanyEmpWage
 }
 
 
-public class EmpWageCompUsingClassObj
+public class EmpWageCompUsingClassObj implements ICalempWageForCompany
 {
 
            public static final int IS_PART_TIME = 1 ;
@@ -43,19 +48,19 @@ public class EmpWageCompUsingClassObj
            int totalEmpHrs = 0;
            int totalWorkingDays = 0;
 
-        public EmpWageCompUsingClassObj()
+        public EmpWageCompUsingClassObj()                 //Work as a EmpWageBuilder
           {
-            companyEmpWageArray = new CompanyEmpWage[5];
+            companyEmpWageArray = new CompanyEmpWage[3];
           }
 
 
-        private void addCompanyEmpWage(String company, int wagePerHr,int numOfWorkingDays, int maxHrPerMonth)
+        public void addCompanyEmpWage(String company, int wagePerHr,int numOfWorkingDays, int maxHrPerMonth)
           {
               companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, wagePerHr,numOfWorkingDays, maxHrPerMonth);
               numOfCompany++;
           }
 
-         private void CalempWageForCompany()
+         public void CalempWageForCompany()
            {
                for (int i=0; i<numOfCompany; i++)
                 {
@@ -78,7 +83,7 @@ public class EmpWageCompUsingClassObj
                }
          }
 
-       private int CalempWageForCompany( CompanyEmpWage companyEmpWage)
+       public int CalempWageForCompany( CompanyEmpWage companyEmpWage)
          {
            while ( totalEmpHrs <  companyEmpWage.maxHrPerMonth && totalWorkingDays <  companyEmpWage.numOfWorkingDays )
              {
@@ -97,7 +102,7 @@ public class EmpWageCompUsingClassObj
       public static void main(String[ ] args)
          {
           System.out.println("Welcome to Employee Wage Computation Program");
-          EmpWageCompUsingClassObj empWageBuilder = new EmpWageCompUsingClassObj();
+          ICalempWageForCompany empWageBuilder = new EmpWageCompUsingClassObj();
           empWageBuilder.addCompanyEmpWage("Dmart", 20 , 6, 100);
           empWageBuilder.addCompanyEmpWage("BridgeLab", 26 , 10, 150);
           empWageBuilder.addCompanyEmpWage("Reliance", 10 , 9, 130);
