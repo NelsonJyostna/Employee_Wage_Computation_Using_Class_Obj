@@ -1,3 +1,5 @@
+import java.util.*;
+
 interface ICalempWageForCompany
 {
      public void addCompanyEmpWage(String company, int wagePerHr,int numOfWorkingDays, int maxHrPerMonth);
@@ -11,7 +13,7 @@ class CompanyEmpWage
            public final int wagePerHr;
            public final int numOfWorkingDays;
            public final int maxHrPerMonth;
-           public int totalEmpWage;
+           //public int totalEmpWage;
 
       public CompanyEmpWage(String company,  int wagePerHr,int numOfWorkingDays, int maxHrPerMonth)
           {
@@ -34,7 +36,6 @@ class CompanyEmpWage
           }
 }
 
-
 public class EmpWageCompUsingClassObj implements ICalempWageForCompany
 {
 
@@ -42,7 +43,7 @@ public class EmpWageCompUsingClassObj implements ICalempWageForCompany
            public static final int IS_FULL_TIME = 2 ;
 
            private int numOfCompany = 0;
-           private CompanyEmpWage[] companyEmpWageArray;
+           private LinkedList<CompanyEmpWage> companyEmpWageList;
 
            int empHrs = 0;
            int totalEmpHrs = 0;
@@ -50,22 +51,23 @@ public class EmpWageCompUsingClassObj implements ICalempWageForCompany
 
         public EmpWageCompUsingClassObj()                 //Work as a EmpWageBuilder
           {
-            companyEmpWageArray = new CompanyEmpWage[3];
+             companyEmpWageList = new LinkedList<>();
           }
 
 
         public void addCompanyEmpWage(String company, int wagePerHr,int numOfWorkingDays, int maxHrPerMonth)
           {
-              companyEmpWageArray[numOfCompany] = new CompanyEmpWage(company, wagePerHr,numOfWorkingDays, maxHrPerMonth);
-              numOfCompany++;
+              CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, wagePerHr,numOfWorkingDays, maxHrPerMonth);
+              companyEmpWageList.add(companyEmpWage);
           }
 
-         public void CalempWageForCompany()
+        public void CalempWageForCompany()
            {
-               for (int i=0; i<numOfCompany; i++)
+               for (int i=0; i<companyEmpWageList.size(); i++)
                 {
-                   companyEmpWageArray[i].setTotalEmpWage(this.CalempWageForCompany(companyEmpWageArray[i]));
-                   System.out.println(companyEmpWageArray[i]);
+                   CompanyEmpWage companyEmpWage =  companyEmpWageList.get(i);
+                   companyEmpWage.setTotalEmpWage(this.CalempWageForCompany(companyEmpWage));
+                   System.out.println(companyEmpWage);
                 }
            }
 
