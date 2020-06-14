@@ -13,7 +13,7 @@ class CompanyEmpWage
            public final int wagePerHr;
            public final int numOfWorkingDays;
            public final int maxHrPerMonth;
-           //public int totalEmpWage;
+           public int totalEmpWage;
 
       public CompanyEmpWage(String company,  int wagePerHr,int numOfWorkingDays, int maxHrPerMonth)
           {
@@ -48,6 +48,8 @@ public class EmpWageCompUsingClassObj implements ICalempWageForCompany
            int empHrs = 0;
            int totalEmpHrs = 0;
            int totalWorkingDays = 0;
+           int totalEmpWage = 0;
+           int wagePerHr = 0;
 
         public EmpWageCompUsingClassObj()                 //Work as a EmpWageBuilder
           {
@@ -93,10 +95,11 @@ public class EmpWageCompUsingClassObj implements ICalempWageForCompany
                        totalWorkingDays++;
                        //salery = empHrs * wagePerHr;
                        totalEmpHrs = totalEmpHrs + empHrs;
-                       //totalEmpWage = totalEmpHrs * wagePerHr;
-                      //System.out.println("Total Emp Wage For Company "+company+" is : "+totalEmpWage);
-                       System.out.println("Day:"+totalWorkingDays+" Emp Hr :"+empHrs);
+                       totalEmpWage = totalEmpHrs * wagePerHr;
+                       //System.out.println("Total Emp Wage For Company " + company +" is : "+totalEmpWage);
+                       //System.out.println("Day:"+totalWorkingDays+" Emp Hr :"+empHrs);
             }
+              //return totalEmpWage * companyEmpWage.wagePerHr;
             return  totalEmpHrs * companyEmpWage.wagePerHr;
          }
 
